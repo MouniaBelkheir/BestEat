@@ -2,8 +2,23 @@ import { useState } from "react";
 import { data } from "./data/data";
 
 const Food = () => {
-	// console.log(data);
 	const [foods, setFoods] = useState(data);
+	// Filter Type burgers/pizza/etc
+	const filterType = (category) => {
+		setFoods(
+			data.filter((item) => {
+				return item.category === category;
+			})
+		);
+	};
+	// Filter by Price
+	const filterPrice = (price) => {
+		setFoods(
+			data.filter((item) => {
+				return item.price === price;
+			})
+		);
+	};
 	return (
 		<div className="max-w-[1640px] m-auto px-4 py-12">
 			<h1 className="text-orange-600 font-bold text-4xl text-center pb-6">
@@ -15,19 +30,29 @@ const Food = () => {
 				<div>
 					<p className="font-bold text-gray-700 pb-3">Filter Type</p>
 					<div className="flex justify-between flex-wrap max-w-[600px] w-full mx-auto">
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => setFoods(data)}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							All
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterType("burger")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							Burger
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterType("pizza")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							Pizza
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterType("salad")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							Salad
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterType("chicken")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							Chicken
 						</button>
 					</div>
@@ -36,16 +61,24 @@ const Food = () => {
 				<div>
 					<p className="font-bold text-gray-700 pb-3">filter Price</p>
 					<div className="flex justify-between flex-wrap max-w-[390px] w-full mx-auto">
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterPrice("$")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							$
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterPrice("$$")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							$$
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterPrice("$$$")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							$$$
 						</button>
-						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
+						<button
+							onClick={() => filterPrice("$$$$")}
+							className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							$$$$
 						</button>
 					</div>
@@ -65,7 +98,9 @@ const Food = () => {
 						<div className="bg-zinc-200 flex justify-between px-3 py-4">
 							<p className="font-bold">{item.name}</p>
 							<p>
-								<span className="bg-orange-400 text-white p-1 rounded-full">{item.price}</span>
+								<span className="bg-orange-400 text-white p-1 rounded-full">
+									{item.price}
+								</span>
 							</p>
 						</div>
 					</div>
