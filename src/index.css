@@ -7,6 +7,6 @@
     @apply border border-black rounded-xl px-5 py-1
   }
   body {
-    @apply bg-stone-200
+    @apply bg-stone-300
   }
 }

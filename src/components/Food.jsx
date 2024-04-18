@@ -1,17 +1,19 @@
+import { useState } from "react";
 import { data } from "./data/data";
 
 const Food = () => {
-	console.log(data);
+	// console.log(data);
+	const [foods, setFoods] = useState(data);
 	return (
 		<div className="max-w-[1640px] m-auto px-4 py-12">
-			<h1 className="text-orange-600 font-bold text-4xl text-center">
+			<h1 className="text-orange-600 font-bold text-4xl text-center pb-6">
 				Top Rated Menu Items
 			</h1>
 			{/* Filter Row */}
 			<div className="flex flex-col lg:flex-row justify-evenly ">
 				{/* Filter Type */}
 				<div>
-					<p className="font-bold text-gray-700">Filter Type</p>
+					<p className="font-bold text-gray-700 pb-3">Filter Type</p>
 					<div className="flex justify-between flex-wrap max-w-[600px] w-full mx-auto">
 						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							All
@@ -32,7 +34,7 @@ const Food = () => {
 				</div>
 				{/* Filter Price */}
 				<div>
-					<p className="font-bold text-gray-700">filter Price</p>
+					<p className="font-bold text-gray-700 pb-3">filter Price</p>
 					<div className="flex justify-between flex-wrap max-w-[390px] w-full mx-auto">
 						<button className="border-orange-600 text-orange-600 hover:bg-orange-400 hover:text-white m-1">
 							$
@@ -48,11 +50,27 @@ const Food = () => {
 						</button>
 					</div>
 				</div>
-            </div>
-            <div>
-                {/* display foods */}
-                
-            </div>
+			</div>
+			{/* display foods */}
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 ">
+				{foods.map((item, index) => (
+					<div
+						key={index}
+						className="border shadow-lg hover:scale-105 duration-300 rounded-lg ">
+						<img
+							src={item.image}
+							alt={item.name}
+							className="w-full h-48 object-cover rounded-t-lg"
+						/>
+						<div className="bg-zinc-200 flex justify-between px-3 py-4">
+							<p className="font-bold">{item.name}</p>
+							<p>
+								<span className="bg-orange-400 text-white p-1 rounded-full">{item.price}</span>
+							</p>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

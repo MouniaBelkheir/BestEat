@@ -4,8 +4,8 @@ const SingleHeadlineCard = ({ name, image, detail }) => {
 		<div className="rounded-xl relative">
 			{/* Overlay */}
 			<div className="absolute w-full h-full bg-black/50 text-white rounded-xl">
-				<p className="font-bold text-2xl px-2 pt-4  ">{name}</p>
-				<p className="px-2 ">{detail}</p>
+				<p className="font-bold text-2xl px-2 pt-4">{name}</p>
+				<p className="px-2">{detail}</p>
 				<button className=" absolute border-orange-400 bg-orange-400 text-black mx-2 bottom-5 right-4 ">
 					Order Now
 				</button>
